@@ -2,17 +2,49 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #e0f2f7; /* Um azul claro suave */
+    /* background-color: #e0f2f7; Removido para o vídeo de fundo */
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     color: #333;
     overflow-x: hidden; /* Evita scroll horizontal em mobile */
+    /* Adicionado background-image como fallback para o vídeo */
+    background-image: url('path/to/your/fallback-image.jpg'); /* Opcional: Caminho para uma imagem de fundo estática */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Overlay escuro para melhorar a legibilidade do texto sobre o vídeo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade (0.5) conforme a sua preferência */
+    z-index: 0; /* Fica entre o vídeo (-1) e o conteúdo (1) */
+}
+
+/* Estilos para o vídeo de fundo */
+#background-video {
+    position: fixed; /* Fixa o vídeo na viewport */
+    right: 0;
+    bottom: 0;
+    min-width: 100%; /* Garante que o vídeo cubra a largura mínima da tela */
+    min-height: 100%; /* Garante que o vídeo cubra a altura mínima da tela */
+    width: auto; /* Permite que a largura se ajuste automaticamente */
+    height: auto; /* Permite que a altura se ajuste automaticamente */
+    z-index: -1; /* Coloca o vídeo atrás de todo o conteúdo */
+    background-size: cover; /* Garante que o vídeo preencha o espaço sem distorção */
+    overflow: hidden; /* Oculta qualquer parte do vídeo que exceda a tela */
+    object-fit: cover; /* Garante que o vídeo preencha o contêiner sem distorção, cortando as bordas se necessário */
 }
 
 .main-container {
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente para o container principal */
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     padding: 30px;
@@ -23,6 +55,9 @@ body {
     flex-direction: column;
     gap: 25px;
     margin: 20px 0;
+    position: relative; /* Necessário para que o z-index funcione */
+    z-index: 1; /* Coloca o conteúdo principal acima do overlay e do vídeo */
+    color: #333; /* Mantido seu padrão, mas pode ser ajustado se o fundo do container ficar muito escuro */
 }
 
 h1 {
