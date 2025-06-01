@@ -44,7 +44,7 @@ body::before {
 }
 
 .main-container {
-    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente para o container principal */
+    background-color: rgba(43, 39, 145 / 0%); /* Fundo branco semi-transparente para o container principal */
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
     padding: 30px;
